@@ -1,0 +1,9 @@
+# Crea un archivo .gitignore básico para Node.js/React/Vite
+@"
+node_modules/
+.env
+.DS_Store
+dist/
+.vscode/
+*.log
+"@ | Out-File -Encoding utf8 .gitignore

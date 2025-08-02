@@ -1,0 +1,487 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f0f2f5;
+  color: #333;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+  background-color: #f0f0f0;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+/* Componentes específicos */
+.rbc-show-more {
+  color: red !important;
+  font-weight: bold !important;
+}
+
+/* Estilos para generación de PDF */
+.generating-pdf {
+  overflow: hidden !important;
+  background-color: white !important;
+}
+
+.generating-pdf .print-table-container {
+  background-color: white !important;
+  zoom: 0.85;
+  transform-origin: top left;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Ocultar botones de acción en PDF */
+.generating-pdf .action-buttons,
+.generating-pdf .MuiIconButton-root,
+.generating-pdf .edit-button,
+.generating-pdf .delete-button {
+  display: none !important;
+}
+
+.generating-pdf .no-pdf {
+  display: none !important;
+}
+
+/* Encabezado para PDF */
+.print-pdf-header {
+  display: none;
+  text-align: center;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.generating-pdf .print-pdf-header {
+  display: block;
+}
+
+.generating-pdf .service-cell,
+.generating-pdf .service-cell div {
+  font-weight: bold !important;
+}
+
+.print-pdf-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.print-pdf-date {
+  font-size: 14px;
+  color: #555;
+}
+
+/* Controles que no deben aparecer en PDF */
+.no-print-controls {
+  display: flex;
+  gap: 8px;
+}
+
+/* Estilos para el título en PDF */
+.pdf-title-container {
+  display: flex;
+  align-items: center;
+}
+
+.service-cell,
+.service-cell .MuiTypography-root {
+  font-weight: bold !important;
+}
+
+/* Estilos para impresión */
+@media print {
+  /* Ocultar elementos no deseados */
+  .no-print, 
+  .no-print *, 
+  .no-print-controls,
+  .no-print-controls *,
+  .MuiAppBar-root,
+  .MuiToolbar-root,
+  .MuiDrawer-root,
+  .MuiDrawer-paper,
+  header,
+  button,
+  .MuiButtonBase-root,
+  .MuiDatePicker-root,
+  .MuiFormControl-root,
+  .MuiInputBase-root,
+  .print-button {
+    display: none !important;
+  }
+
+  /* Ajustes generales */
+  body {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 10px !important;
+    background: white !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Título centrado en impresión */
+  .pdf-title-container {
+    display: flex !important;
+    justify-content: center !important;
+    width: 100% !important;
+    margin-bottom: 15px !important;
+  }
+
+  .pdf-title-container h6 {
+    text-align: center !important;
+    font-size: 16px !important;
+    color: #344767 !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+  }
+
+  /* Contenedor principal */
+  .MuiPaper-root {
+    box-shadow: none !important;
+    background-color: transparent !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  /* Contenedor de la tabla */
+  .print-table-container {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    background-color: transparent !important;
+    border: none !important;
+    overflow: visible !important;
+  }
+
+  /* Estilos para el título de la tabla */
+  .print-title {
+    display: block !important;
+    font-size: 14px !important;
+    font-weight: bold !important;
+    text-align: center !important;
+    margin: 10px 0 !important;
+    page-break-after: avoid !important;
+  }
+
+  /* Estilos para la tabla */
+  .print-table-container table {
+    width: 100% !important;
+    table-layout: auto !important;
+    border-collapse: collapse !important;
+    page-break-inside: auto !important;
+    margin: 0 !important;
+  }
+
+  /* Estilo para las celdas de encabezado */
+  .print-table-container table th {
+    background-color: #f5f5f5 !important;
+    font-weight: bold !important;
+    text-align: center !important;
+    padding: 4px !important;
+    font-size: 9px !important;
+    border: 1px solid #ddd !important;
+    page-break-inside: avoid !important;
+  }
+
+  .print-table-container table td:first-child,
+  .print-table-container table th:first-child,
+  .service-cell,
+  .service-cell div {
+    font-weight: bold !important;
+  }
+
+  /* Estilo especial para la columna SERVICIO */
+  .print-table-container table td:first-child,
+  .print-table-container table th:first-child {
+    width: 15% !important;
+    min-width: 100px !important;
+    max-width: 150px !important;
+    font-size: 9px !important;
+    line-height: 1.3 !important;
+    padding: 4px !important;
+    word-break: break-word !important;
+    white-space: normal !important;
+    text-align: center !important;
+    vertical-align: middle !important;
+    border: 1px solid #ddd !important;
+    font-weight: bold !important;
+  }
+
+  /* Estilo para las celdas de datos */
+  .print-table-container table td {
+    padding: 3px !important;
+    font-size: 8px !important;
+    line-height: 1.2 !important;
+    border: 1px solid #ddd !important;
+    vertical-align: middle !important;
+    page-break-inside: avoid !important;
+    text-align: center !important;
+  }
+
+  /* Ajuste para los nombres de empleados */
+  .print-table-container table td div {
+    font-size: 8px !important;
+    line-height: 1.2 !important;
+    padding: 1px !important;
+    margin: 0 !important;
+  }
+
+  /* Evitar que las filas se dividan entre páginas */
+  .print-table-container table tr {
+    page-break-inside: avoid !important;
+    page-break-after: auto !important;
+  }
+
+  /* Ajustar el encabezado para que se repita en cada página */
+  .print-table-container thead {
+    display: table-header-group !important;
+  }
+
+  /* Asegurar que la tabla no se desborde */
+  @page {
+    size: auto;
+    margin: 10mm;
+  }
+
+  /* Eliminar espacios innecesarios */
+  .MuiBox-root {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .table-scroll-wrapper {
+    overflow: visible !important;
+    flex-grow: 0 !important;
+    min-height: auto !important;
+    height: auto !important;
+  }
+
+  .MuiTableContainer-root {
+    overflow: visible !important;
+    max-height: none !important;
+  }
+  
+}
+
+/* Estilos para el tooltip de los gráficos */
+.apexcharts-tooltip.custom-tooltip-container,
+.apexcharts-tooltip .custom-tooltip-container {
+  background: rgba(30, 30, 30, 0.95) !important;
+  color: white !important;
+  padding: 12px 16px !important;
+  border-radius: 6px !important;
+  border-left: 4px solid;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25) !important;
+  max-width: 320px !important;
+}
+
+/* Ocultar tooltips por defecto */
+.apexcharts-tooltip:not(.active) {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+.tooltip-header {
+  font-weight: 600;
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 14px;
+  color: #fff;
+}
+
+.tooltip-content {
+  font-size: 13px;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.tooltip-content div {
+  margin-bottom: 6px;
+  display: flex;
+}
+
+.tooltip-content strong {
+  min-width: 80px;
+  display: inline-block;
+  color: #fff;
+  margin-right: 8px;
+}
+
+.tooltip-content ul {
+  padding-left: 20px;
+  margin: 8px 0 4px;
+}
+
+.tooltip-content li {
+  margin-bottom: 4px;
+  position: relative;
+}
+
+.tooltip-content li:before {
+
+  position: absolute;
+  left: -15px;
+  color: currentColor;
+}
+
+.tooltip-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 8px 0 !important;
+}
+
+/* Scroll personalizado para tooltips */
+.custom-tooltip-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-tooltip-container::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+}
+
+.custom-tooltip-container::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+.custom-tooltip-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .custom-tooltip-container {
+    max-width: 260px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+  
+  .tooltip-header {
+    font-size: 13px;
+  }
+  
+  .tooltip-content {
+    font-size: 12px;
+  }
+}
+
+.asignaciones-tooltip .tooltip-header {
+  color: #3f51b5;
+}
+
+/* Estilos específicos para tooltips de tareas */
+.tasks-tooltip .tooltip-header {
+  color: #4caf50;
+}
+
+/* Clases específicas para el contenido del tooltip */
+.tooltip-row {
+  display: flex;
+  margin-bottom: 6px;
+}
+
+.tooltip-label {
+  min-width: 80px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.tooltip-value {
+  flex: 1;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.employee-list {
+  margin: 8px 0 0;
+  list-style-type: none;
+}
+
+.employee-item {
+  margin-bottom: 4px;
+  position: relative;
+}
+
+.employee-item:before {
+  position: absolute;
+  left: 0;
+  color: currentColor;
+}
+
+.employee-rank {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9em;
+}
+
+.no-employees {
+  color: rgba(255, 255, 255, 0.7);
+  font-style: italic;
+  margin-top: 8px;
+}
+
+.apexcharts-tooltip .employee-detail {
+  margin-left: 4px; /* Espacio antes del guión */
+}
+
+.apexcharts-tooltip .employee-detail::before {
+  content: "-";
+  margin: 0 4px; /* Espacios alrededor del guión */
+}
+
+.apexcharts-tooltip .employee-detail.no-assignment {
+  color: #f44336 !important; /* Color rojo para "No asignado" */
+}
+
+.apexcharts-tooltip .employee-detail.has-assignment {
+  color: #4caf50 !important; /* Color verde cuando hay servicio */
+}
+
+.apexcharts-tooltip {
+  z-index: 10000 !important;
+  pointer-events: auto !important;
+}
+
+.apexcharts-canvas {
+  overflow: visible !important;
+}
+
+.MuiCard-root {
+  overflow: visible !important;
+}
+
+/* Estilos específicos para generación de PDF */
+.generating-pdf .no-print-controls {
+  display: none !important;
+}
+
+.generating-pdf .pdf-title-container {
+  display: flex !important;
+  justify-content: center !important;
+  width: 100% !important;
+  margin-bottom: 20px !important;
+}
+
+.generating-pdf .pdf-title-container h6 {
+  text-align: center !important;
+  font-size: 18px !important;
+  color: #344767 !important;
+  margin: 0 auto !important;
+  padding: 10px 0 !important;
+  width: 100% !important;
+}

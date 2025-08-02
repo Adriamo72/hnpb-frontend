@@ -1,0 +1,15 @@
+@font-face {
+  font-family: 'Myriad Pro Semibold';
+  src: local('Myriad Pro Semibold'), 
+       url('../assets/fonts/MYRIADPRO-SEMIBOLD.OTF') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap; /* Mejora el rendimiento de carga */
+}
+
+/* Fuente para texto normal (Regular) */
+@font-face {
+  font-family: 'Myriad Pro Regular';
+  src: url('../assets/fonts/MYRIADPRO-REGULAR.OTF') format('opentype');
+  font-weight: 400;
+}
