@@ -91,6 +91,9 @@ const AnalisisTab = () => {
       if (empleadosIds.length > 0) {
         await cargarEmpleados(empleadosIds);
       }
+
+      // Establecer título inicial
+      setCurrentTitle(dayjs().locale('es').format('MMMM YYYY').replace(/^\w/, c => c.toUpperCase()));
     } catch (error) {
       console.error('Error cargando datos:', error);
       enqueueSnackbar('Error al cargar las licencias', { variant: 'error' });
@@ -101,7 +104,7 @@ const AnalisisTab = () => {
   }, [cargarEmpleados, enqueueSnackbar]);
 
   useEffect(() => {
-    fetchData().catch(() => {});
+    fetchData();
   }, [fetchData]);
 
   const safeFormatDate = (date) => {
@@ -141,7 +144,7 @@ const AnalisisTab = () => {
       return {
         id: licencia.id,
         title: `${jerarquiaCorta} ${nombreCorto}`,
-        start: licencia.fecha_inicio,
+        start: dayjs(licencia.fecha_inicio).format('YYYY-MM-DD'),
         end: dayjs(licencia.fecha_fin).add(1, 'day').format('YYYY-MM-DD'),
         allDay: true,
         extendedProps: {
@@ -232,7 +235,13 @@ const AnalisisTab = () => {
 
   const handleDatesSet = (dateInfo) => {
     try {
-      const title = dayjs(dateInfo.start).locale('es').format('MMMM YYYY').replace(/^\w/, c => c.toUpperCase());
+      const calendarApi = calendarRef.current?.getApi();
+      if (!calendarApi) return;
+
+      // Obtener la fecha actual visible en el calendario
+      const currentDate = calendarApi.view.currentStart;
+      const title = dayjs(currentDate).locale('es').format('MMMM YYYY').replace(/^\w/, c => c.toUpperCase());
+      
       setCurrentTitle(title);
       setCurrentView(dateInfo.view.type);
     } catch (error) {
@@ -426,7 +435,6 @@ const AnalisisTab = () => {
                       </span>
                     )}
                     moreLinkDidMount={(arg) => {
-                      // Sobrescribe el tooltip en español
                       arg.el.setAttribute('title', `Ver ${arg.num} eventos más`);
                     }}
                     eventDisplay="block"
@@ -435,25 +443,7 @@ const AnalisisTab = () => {
                     height="auto"
                     datesSet={handleDatesSet}
                     headerToolbar={false}
-                    popoverContent={(arg) => {
-                      return (
-                        <div style={{ padding: '8px', maxHeight: '300px', overflowY: 'auto' }}>
-                          {arg.dayEl.children.map((eventEl, index) => {
-                            const event = arg.eventStore[eventEl.getAttribute('data-event-id')];
-                            return (
-                              <div key={index} style={{ marginBottom: '4px' }}>
-                                {event.timeText && (
-                                  <span style={{ marginRight: '8px', fontWeight: 'bold' }}>
-                                    {event.timeText}
-                                  </span>
-                                )}
-                                <span>{event.title}</span>
-                              </div>
-                            );
-                          })}
-                        </div>
-                      );
-                    }}
+                    nowIndicator={true}
                   />
                 </Box>
               </Box>
