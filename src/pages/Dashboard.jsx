@@ -58,7 +58,7 @@ const SideNavRoot = styled(Box)(({ theme }) => ({
   color: theme.palette.text.primary,
   display: 'flex',
   flexDirection: 'column',
-  overflow: 'hidden'
+  overflow: 'visible'
 }));
 
 // Estilo para los items del SideNav
@@ -260,7 +260,7 @@ const Dashboard = () => {
             width: drawerWidth,
             border: 'none',
             background: theme.palette.background.sidenav || '#37373d',
-            overflow: 'hidden',
+            overflow: 'visible',
             position: 'fixed',
             height: 'calc(100% - 32px)', // 16px arriba y abajo
             margin: '16px 16px 0 16px',

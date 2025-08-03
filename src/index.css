@@ -485,3 +485,44 @@ code {
   padding: 10px 0 !important;
   width: 100% !important;
 }
+
+/* Estilos para FullCalendar */
+.fc .fc-daygrid-more-link {
+  font-weight: bold !important;
+  color: red !important;
+  font-size: 0.7em !important;
+  padding: 0 2px !important;
+}
+
+.fc .fc-daygrid-event {
+  margin-bottom: 1px !important;
+}
+
+.fc .fc-daygrid-day-frame {
+  min-height: 60px !important;
+}
+
+.fc .fc-popover {
+  z-index: 9999 !important; /* Asegura que aparezca sobre otros elementos */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Ajustes para los tooltips dentro del popover */
+.fc .fc-popover .fc-daygrid-event-harness {
+  position: relative; /* Necesario para el z-index funcione */
+}
+
+.fc .fc-popover .fc-daygrid-event {
+  z-index: 10000 !important; /* Mayor que el popover */
+}
+
+/* Asegurar que los tooltips aparezcan sobre el popover */
+.MuiTooltip-popper {
+  z-index: 10001 !important; /* Mayor que todo lo demás */
+}
+
+/* Ajustar posición del tooltip para que no quede oculto */
+.MuiTooltip-tooltip {
+  transform-origin: center bottom !important;
+  margin-top: 8px !important;
+}

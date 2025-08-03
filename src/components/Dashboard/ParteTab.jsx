@@ -978,7 +978,7 @@ const statusSeries = [
       {/* Grid container para las tarjetas */}
       <Grid container sx={{
         flexWrap: 'wrap', 
-        overflowX: 'auto',
+        overflow: 'visible',
         '&::-webkit-scrollbar': {
           display: 'none'
         },
@@ -1111,7 +1111,7 @@ const statusSeries = [
           mt: -3,
           ml: -3,
           flexWrap: { xs: 'wrap', md: 'wrap' },
-          overflowX: 'auto',
+          overflow: 'visible',
           '&::-webkit-scrollbar': {
             display: 'none'
           },
@@ -1129,7 +1129,8 @@ const statusSeries = [
               height: '100%',
               display: 'flex',
               flexDirection: 'column',
-              borderRadius: '12px'
+              borderRadius: '12px',
+              overflow: 'visible'
             }}>
               <Card sx={{ 
                 display: 'flex',
@@ -1410,7 +1411,8 @@ const statusSeries = [
               height: '100%',
               display: 'flex',
               flexDirection: 'column',
-              borderRadius: '12px'
+              borderRadius: '12px',
+              overflow: 'visible'
             }}>
               <Card sx={{ 
                 display: 'flex',
@@ -1719,6 +1721,7 @@ const statusSeries = [
                   display: 'flex',
                   flexDirection: 'column',
                   borderRadius: '12px',
+                  overflow: 'visible',
                   '& .MuiCard-root': {
                     overflow: 'visible'
                   }
@@ -1772,8 +1775,9 @@ const statusSeries = [
                   display: 'flex',
                   flexDirection: 'column',
                   borderRadius: '12px',
+                  overflow: 'visible',
                   '& .MuiCard-root': {
-                    overflow: 'hidden'
+                    overflow: 'visible'
                   }
                 }}>
                   <Card sx={{ 
@@ -1854,7 +1858,8 @@ const statusSeries = [
                 display: 'flex',
                 flexDirection: 'column',
                 borderRadius: '12px',
-                mx: 0
+                mx: 0,
+                overflow: 'visible'
               }}>
                 <Card sx={{ 
                   display: 'flex',
@@ -1904,7 +1909,8 @@ const statusSeries = [
                 display: 'flex',
                 flexDirection: 'column',
                 borderRadius: '12px',
-                mx: 0
+                mx: 0,
+                overflow: 'visible'
               }}>
                 <Card sx={{ 
                   display: 'flex',
@@ -1952,7 +1958,8 @@ const statusSeries = [
                 display: 'flex',
                 flexDirection: 'column',
                 borderRadius: '12px',
-                mx: 0
+                mx: 0,
+                overflow: 'visible'
               }}>
                 <Card sx={{ 
                   display: 'flex',
@@ -2000,7 +2007,7 @@ const statusSeries = [
             mt: -3,
             ml: -3,
             flexWrap: { xs: 'wrap', md: 'wrap' },
-            overflowX: 'auto',
+            overflow: 'visible',
             '&::-webkit-scrollbar': {
               display: 'none'
             },
@@ -2025,8 +2032,9 @@ const statusSeries = [
                   display: 'flex',
                   flexDirection: 'column',
                   borderRadius: '12px',
+                  overflow: 'visible',
                   '& .MuiCard-root': {
-                    overflow: 'hidden'
+                    overflow: 'visible'
                   }
                 }}>
                   <Card sx={{ 

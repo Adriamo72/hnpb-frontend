@@ -47,6 +47,7 @@ const AuthForm = ({ isLogin, onSubmit, loading }) => {
         <TextField
           fullWidth
           variant="standard"
+          id="name"
           label="Nombre completo"
           name="name"
           autoComplete="name"
@@ -59,6 +60,7 @@ const AuthForm = ({ isLogin, onSubmit, loading }) => {
       <TextField
         fullWidth
         variant="standard"
+        id="email"
         label="Correo electrónico"
         name="email"
         type="email"
@@ -71,6 +73,7 @@ const AuthForm = ({ isLogin, onSubmit, loading }) => {
       <TextField
         fullWidth
         variant="standard"
+        id="password"
         name="password"
         label="Contraseña"
         type="password"
@@ -84,9 +87,11 @@ const AuthForm = ({ isLogin, onSubmit, loading }) => {
         <TextField
           fullWidth
           variant="standard"
+          id="confirmPassword"
           name="confirmPassword"
           label="Confirmar contraseña"
           type="password"
+          autoComplete="new-password"
           value={formData.confirmPassword}
           onChange={handleChange}
           required
